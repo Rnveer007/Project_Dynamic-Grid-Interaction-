@@ -26,11 +26,11 @@ container.addEventListener("click", (event) => {
 
 
     item.forEach((currentBox, index) => {
-      let curruntBoxRow = Math.floor(index / gridSize);
-      let currunBoxCol = index % gridSize;
+      let currentBoxRow = Math.floor(index / gridSize);
+      let currenBoxCol = index % gridSize;
 
 
-      if (curruntBoxRow - currunBoxCol === clickedRow - clickedCol || curruntBoxRow + currunBoxCol === clickedRow + clickedCol) {
+      if (currentBoxRow - currenBoxCol === clickedRow - clickedCol || currentBoxRow + currenBoxCol === clickedRow + clickedCol) {
         if (index !== clickedBoxIndex) {
           currentBox.classList.add("diagonal");
         }
