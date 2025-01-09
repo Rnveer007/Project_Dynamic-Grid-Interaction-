@@ -33,7 +33,7 @@ body {
   }
   
   .box.clicked {
-    background-color: black; /* Highlight the clicked box */
+    background-color: red; /* Highlight the clicked box */
   }
   
   .box.diagonal {

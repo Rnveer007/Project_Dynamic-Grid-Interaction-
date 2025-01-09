@@ -2,7 +2,7 @@ let container = document.querySelector("#grid-container");
 const resetButton = document.getElementById("reset");
 
 
-let boxCount = 49;  // Total number of boxes
+let boxCount = 49;
 let gridSize = 7;  // Assuming a 7x7 grid (7 rows and 7 columns)
 
 for (let i = 0; i < boxCount; i++) {
@@ -12,33 +12,33 @@ for (let i = 0; i < boxCount; i++) {
 }
 
 container.addEventListener("click", (event) => {
-  let item = document.querySelectorAll(".box");
 
-  // Find the index of the clicked box
-  let clickedBoxIndex = [...item].findIndex(n => n === event.target);
-
+  let item = document.querySelectorAll(".box")
+  let clickedBoxIndex = [...item].findIndex((n) => n === event.target);
   if (clickedBoxIndex !== -1) {
-    // Calculate the row and column of the clicked box
     let clickedRow = Math.floor(clickedBoxIndex / gridSize);
     let clickedCol = clickedBoxIndex % gridSize;
+
     clearGridHighlights()
 
-    // Color the diagonal boxes
-    item.forEach((box, index) => {
-      let row = Math.floor(index / gridSize);
-      console.log(row);
-      let col = index % gridSize;
+    let clickedBox = item[clickedBoxIndex];
+    clickedBox.classList.add("clicked");
 
-      // Check for diagonal direction (top-left, bottom-right, top-right, bottom-left)
-      if (row === clickedRow + (col - clickedCol) || row === clickedRow - (col - clickedCol)) {
-        // box.style.backgroundColor = "green";  // Change color to green
-        box.classList.add("diagonal");
 
+    item.forEach((currentBox, index) => {
+      let curruntBoxRow = Math.floor(index / gridSize);
+      let currunBoxCol = index % gridSize;
+
+
+      if (curruntBoxRow - currunBoxCol === clickedRow - clickedCol || curruntBoxRow + currunBoxCol === clickedRow + clickedCol) {
+        if (index !== clickedBoxIndex) {
+          currentBox.classList.add("diagonal");
+        }
       }
-    });
+
+    })
   }
 });
-
 
 function clearGridHighlights() {
   const boxes = document.querySelectorAll(".box");
